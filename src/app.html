@@ -7,7 +7,28 @@
     <title>Tauri + SvelteKit + Typescript App</title>
     %sveltekit.head%
   </head>
+
+  <style>
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 318;
+
+      background-color: white; /* Replace with theme color later */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
   <body data-sveltekit-preload-data="hover">
+    <div id="splash-screen">
+      Loading...
+    </div>
+
     <div style="display: contents">%sveltekit.body%</div>
   </body>
 </html>

@@ -15,7 +15,8 @@ fn main() {
             .title("TypeTeX")
             .inner_size(800.0, 600.0)
             .fullscreen(false)
-            .resizable(true);
+            .resizable(true)
+            .visible(false);
 
         #[cfg(target_os = "windows")]
         {
