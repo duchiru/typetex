@@ -2,7 +2,33 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    let builder = tauri::Builder::default();
+    let mut builder = tauri::Builder::default();
+
+    builder = builder.setup(|app| {
+        let mut main_window_builder = tauri::WebviewWindowBuilder::new(
+            app,
+            "main",
+            tauri::WebviewUrl::default(),
+        );
+
+        main_window_builder = main_window_builder
+            .title("TypeTeX")
+            .inner_size(800.0, 600.0)
+            .fullscreen(false)
+            .resizable(true);
+
+        #[cfg(target_os = "windows")]
+        {
+            main_window_builder = main_window_builder.decorations(false).shadow(true);
+        }
+
+        if let Err(err) = main_window_builder.build() {
+            // GUI is the only way to interact with TypeTeX, so we must panic if it fails
+            panic!("TypeTeX could not initialize application GUI: {}", err);
+        }
+
+        Ok(())
+    });
 
     let app = builder.build(tauri::generate_context!());
 
@@ -11,7 +37,7 @@ fn main() {
             app.run(|_app_handle, _event| {});
         }
         Err(err) => {
-            eprintln!("Error building Tauri application: {}", err);
+            panic!("TypeTeX ran into an error while starting: {}", err);
         }
     }
 }
