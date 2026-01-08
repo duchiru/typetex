@@ -7,11 +7,11 @@ import { getCurrentWindow } from "@tauri-apps/api/window";
 export const ssr = false;
 
 export async function load() {
-    // Show the window first and do initial jobs under splash screen
-    await getCurrentWindow().show();
+	// Show the window first and do initial jobs under splash screen
+	await getCurrentWindow().show();
 
-    // Inital jobs goes here
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate some initial jobs
+	// Inital jobs goes here
+	await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate some initial jobs
 
-    return {};
+	return {};
 }

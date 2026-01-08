@@ -2,43 +2,40 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-    let mut builder = tauri::Builder::default();
+	let mut builder = tauri::Builder::default();
 
-    builder = builder.setup(|app| {
-        let mut main_window_builder = tauri::WebviewWindowBuilder::new(
-            app,
-            "main",
-            tauri::WebviewUrl::default(),
-        );
+	builder = builder.setup(|app| {
+		let mut main_window_builder =
+			tauri::WebviewWindowBuilder::new(app, "main", tauri::WebviewUrl::default());
 
-        main_window_builder = main_window_builder
-            .title("TypeTeX")
-            .inner_size(800.0, 600.0)
-            .fullscreen(false)
-            .resizable(true)
-            .visible(false);
+		main_window_builder = main_window_builder
+			.title("TypeTeX")
+			.inner_size(800.0, 600.0)
+			.fullscreen(false)
+			.resizable(true)
+			.visible(false);
 
-        #[cfg(target_os = "windows")]
-        {
-            main_window_builder = main_window_builder.decorations(false).shadow(true);
-        }
+		#[cfg(target_os = "windows")]
+		{
+			main_window_builder = main_window_builder.decorations(false).shadow(true);
+		}
 
-        if let Err(err) = main_window_builder.build() {
-            // GUI is the only way to interact with TypeTeX, so we must panic if it fails
-            panic!("TypeTeX could not initialize application GUI: {}", err);
-        }
+		if let Err(err) = main_window_builder.build() {
+			// GUI is the only way to interact with TypeTeX, so we must panic if it fails
+			panic!("TypeTeX could not initialize application GUI: {}", err);
+		}
 
-        Ok(())
-    });
+		Ok(())
+	});
 
-    let app = builder.build(tauri::generate_context!());
+	let app = builder.build(tauri::generate_context!());
 
-    match app {
-        Ok(app) => {
-            app.run(|_app_handle, _event| {});
-        }
-        Err(err) => {
-            panic!("TypeTeX ran into an error while starting: {}", err);
-        }
-    }
+	match app {
+		Ok(app) => {
+			app.run(|_app_handle, _event| {});
+		}
+		Err(err) => {
+			panic!("TypeTeX ran into an error while starting: {}", err);
+		}
+	}
 }
