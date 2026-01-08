@@ -19,18 +19,21 @@ fn main() {
 		{
 			main_window_builder = main_window_builder.decorations(false).shadow(true);
 		}
-
-		if let Err(err) = main_window_builder.build() {
-			// GUI is the only way to interact with TypeTeX, so we must panic if it fails
-			panic!("TypeTeX could not initialize application GUI: {}", err);
+		
+		match main_window_builder.build() {
+			Ok(window) => {
+				let _ = window.set_focus();
+			}
+			Err(err) => {
+				// GUI is the only way to interact with TypeTeX, so we must panic if it fails
+				panic!("TypeTeX could not initialize application GUI: {}", err);
+			}
 		}
 
 		Ok(())
 	});
 
-	let app = builder.build(tauri::generate_context!());
-
-	match app {
+	match builder.build(tauri::generate_context!()) {
 		Ok(app) => {
 			app.run(|_app_handle, _event| {});
 		}
