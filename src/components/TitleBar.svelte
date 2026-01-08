@@ -11,13 +11,13 @@
 	<div class="title-bar-center"></div>
 	<div class="title-bar-right">
 		<button onclick={() => appWindow.close()} class="title-bar-btn w-11 hover:bg-red-500">
-			<XIcon size={16} />
+			<XIcon size={20} strokeWidth={1.5} />
 		</button>
 		<button onclick={() => appWindow.toggleMaximize()} class="title-bar-btn w-11 hover:bg-gray-500">
-			<SquareIcon size={16} />
+			<SquareIcon size={16} strokeWidth={1.75} />
 		</button>
 		<button onclick={() => appWindow.minimize()} class="title-bar-btn w-11 hover:bg-gray-500">
-            <MinusIcon size={16} />
+            <MinusIcon size={18} strokeWidth={1.75} />
         </button>
 	</div>
 </div>
