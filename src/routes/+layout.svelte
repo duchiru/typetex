@@ -1,4 +1,5 @@
 <script lang="ts">
+    import TitleBar from "../components/TitleBar.svelte";
     import { onMount } from "svelte";
 
     import "../app.css";
@@ -10,4 +11,5 @@
     })
 </script>
 
+<TitleBar />
 <slot />
