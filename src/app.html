@@ -2,31 +2,31 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<title>Tauri + SvelteKit + Typescript App</title>
 		%sveltekit.head%
 	</head>
 
-	<style>
-		#splash-screen {
-			position: fixed;
-			top: 0;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			z-index: 318;
-
-			background-color: white; /* Replace with theme color later */
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-	</style>
-
 	<body data-sveltekit-preload-data="hover">
-		<div id="splash-screen">Loading...</div>
+		<style>
+			#splash-screen {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 318;
 
+				/* Replace with theme color later */
+				background-color: white;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+
+		<div id="splash-screen">Loading...</div>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
