@@ -7,9 +7,11 @@
 </script>
 
 <div class="title-bar grid grid-cols-3 h-8">
-	<div class="title-bar-left"></div>
+	<div class="title-bar-left flex flex-row p-1">
+		<img src="/logo.svg" alt="logo" class="h-5 w-5 m-0.5" />
+	</div>
 	<div class="title-bar-center"></div>
-	<div class="title-bar-right">
+	<div class="title-bar-right flex flex-row-reverse">
 		<button onclick={() => appWindow.close()} class="title-bar-btn w-11 hover:bg-red-500">
 			<XIcon size={20} strokeWidth={1.5} />
 		</button>
@@ -26,11 +28,6 @@
 	.title-bar {
 		-webkit-app-region: drag;
 		user-select: none;
-	}
-
-	.title-bar .title-bar-right {
-		display: flex;
-		flex-direction: row-reverse;
 	}
 
 	.title-bar .title-bar-right .title-bar-btn {

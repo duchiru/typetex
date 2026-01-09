@@ -19,7 +19,7 @@ fn main() {
 		{
 			main_window_builder = main_window_builder.decorations(false).shadow(true);
 		}
-		
+
 		match main_window_builder.build() {
 			Ok(window) => {
 				let _ = window.set_focus();
